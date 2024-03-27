@@ -42,7 +42,9 @@ const Form: React.FC<FormProps> = ({ setShowAddTaskDialog }) => {
     <div className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-md flex items-center justify-center z-50">
       <div className="bg-white p-16 rounded shadow">
         <button
-          className="text-black font-bold fixed top-24 right-[49rem] mt-2 text-2xl"
+          className="text-black font-bold fixed top-24 right-[49rem] mt-2 text-2xl border-2 w-8 border-black rounded-full
+
+          "
           onClick={handleCloseDialog}
         >
           X
