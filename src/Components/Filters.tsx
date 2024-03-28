@@ -52,9 +52,9 @@ const FiltersPage: React.FC = () => {
                 onChange={handleFilterChange}
               >
                 <option>Assignee</option>
-                <option value="John Doe">Aman</option>
-                <option value="Raj">Raj</option>
-                <option value="Abhay">Abhay</option>
+                <option value="John Doe">John Doe</option>
+                <option value="Jane Smith">Jane Smith</option>
+                <option value="Aman">Aman</option>
               </select>
               <select
                 className="m-2 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-4"

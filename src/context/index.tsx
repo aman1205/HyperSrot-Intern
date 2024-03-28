@@ -60,7 +60,7 @@ export const TaskProvider: React.FC<TaskProviderProps> = ({ children }) => {
       startDate: "2024-05-10", // Predefined start date
       endDate: null, // No end date initially
       status: "Pending",
-      assignees: "Aman",
+      assignees: "John Doe",
       priority: "P1",
       team: "SDE",
     },
@@ -72,7 +72,7 @@ export const TaskProvider: React.FC<TaskProviderProps> = ({ children }) => {
       endDate: null, // No end date initially
       status: "Pending",
       assignees: "Aman",
-      priority: "P0",
+      priority: "P1",
       team: "SDE",
     },
     {
@@ -93,7 +93,7 @@ export const TaskProvider: React.FC<TaskProviderProps> = ({ children }) => {
       startDate: "2024-01-10", // Predefined start date
       endDate: "2024-01-15", // Predefined end date
       status: "Completed",
-      assignees: "John Doe",
+      assignees: "Jane Smith",
       priority: "P2",
       team: "SDE",
     },
@@ -104,7 +104,7 @@ export const TaskProvider: React.FC<TaskProviderProps> = ({ children }) => {
       startDate: "2024-01-10", // Predefined start date
       endDate: "2024-01-20", // Predefined end date
       status: "Completed",
-      assignees: "Abhay",
+      assignees: "John Doe",
       priority: "P1",
       team: "SDE",
     },
@@ -138,7 +138,7 @@ export const TaskProvider: React.FC<TaskProviderProps> = ({ children }) => {
       startDate: "2024-01-10", // Predefined start date
       endDate: null, // No end date initially
       status: "Deferred",
-      assignees: "Raj",
+      assignees: "Aman",
       priority: "P1",
       team: "SDE",
     },
