@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { useTaskContext } from "../context/index";
 
-const Form = ({ setShowAddTaskDialog }) => {
+interface FormProps {
+  setShowAddTaskDialog: React.Dispatch<React.SetStateAction<boolean>>;
+}
+const Form: React.FC<FormProps> = ({ setShowAddTaskDialog })=> {
   const { addTask } = useTaskContext();
   const [formData, setFormData] = useState({
     title: "",
@@ -22,7 +25,7 @@ const Form = ({ setShowAddTaskDialog }) => {
     setShowAddTaskDialog(false);
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e:any) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,

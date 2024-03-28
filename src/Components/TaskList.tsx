@@ -1,11 +1,5 @@
-import { Task } from "./Types";
 import { useTaskContext } from "../context/index";
 import TaskCard from "./TaskCard";
-
-interface TaskListProps {
-  tasks: Task[];
-  deleteTask: (taskId: number) => void;
-}
 
 const TaskList = () => {
   const { tasks } = useTaskContext();

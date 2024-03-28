@@ -9,7 +9,7 @@ const FiltersPage: React.FC = () => {
     startDate: "",
     endDate: ""
   });
-  const [showAddTaskDialog, setShowAddTaskDialog] = useState<Boolean>(false);
+  const [showAddTaskDialog, setShowAddTaskDialog] = useState<boolean>(false);
   const { tasks, sortTasksByPriority, sortTasksByDate, filterTasks } = useTaskContext();
 
   const handleFilterChange = (e: any) => {
@@ -20,7 +20,7 @@ const FiltersPage: React.FC = () => {
     }));
   };
 
-  const handleFilters = (e: any) => {
+  const handleFilters = () => {
     filterTasks(filters);
     console.log("Filters ", filters);
     console.table(tasks);
