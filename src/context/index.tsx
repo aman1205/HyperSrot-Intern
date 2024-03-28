@@ -9,7 +9,7 @@ export interface Task {
   assignees: string;
   team: string;
   startDate: string;
-  endDate: string | null;
+  endDate : string | null;
 }
 interface TaskContextType {
   tasks: Task[];
@@ -239,7 +239,7 @@ export const TaskProvider: React.FC<TaskProviderProps> = ({ children }) => {
 
     if (filters.endDate) {
       const endDate = new Date(filters.endDate);
-      filteredTasks = filteredTasks.filter(
+      filteredTasks = tasks.filter(
         (task) => task.endDate && new Date(task.endDate) <= endDate
       );
     }

@@ -20,7 +20,7 @@ const App: React.FC = () => {
   return (
     <>
       <NavBar />
-      <div className="flex justify-center items-center  flex-col  border-2	border-red-600 	">
+      <div className="flex justify-center items-center  flex-col">
         <h1 className="text-3xl font-bold mb-4">Task Tracker</h1>
         <FiltersPage/>
         {/* <TaskForm addTask={addTask} /> */}

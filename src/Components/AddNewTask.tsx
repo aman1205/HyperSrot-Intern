@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useTaskContext } from "../context/index";
 
-interface FormProps {
-  setShowAddTaskDialog: React.Dispatch<React.SetStateAction<boolean>>;
-}
+// interface FormProps {
+//   setShowAddTaskDialog: React.Dispatch<React.SetStateAction<boolean>>;
+// }
 
-const Form: React.FC<FormProps> = ({ setShowAddTaskDialog }) => {
+const Form = ({ setShowAddTaskDialog }) => {
   const { addTask } = useTaskContext();
   const [formData, setFormData] = useState({
     title: "",
@@ -19,7 +19,7 @@ const Form: React.FC<FormProps> = ({ setShowAddTaskDialog }) => {
     setShowAddTaskDialog(false);
   };
 
-  const handleInputChange = (e:any) => {
+  const handleInputChange = (e: any) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -28,12 +28,29 @@ const Form: React.FC<FormProps> = ({ setShowAddTaskDialog }) => {
   };
 
   const handleSaveTask = () => {
+    const currentDate = new Date();
+    const day = currentDate.getDate();
+    const month = currentDate.getMonth() + 1; // Note: Months are zero-indexed, so we add 1
+    const year = currentDate.getFullYear() % 100;
+    // Format day, month, and year with leading zeros if necessary
+    const formattedDay = day < 10 ? "0" + day : day;
+    const formattedMonth = month < 10 ? "0" + month : month;
+    const formattedYear = year < 10 ? "0" + year : year;
+
+    const endDate = new Date(currentDate);
+    endDate.setDate(currentDate.getDate() + 10);
+
     // Save the task and close the dialog
     const newTask = {
-      id: Math.random()*10,
+      id: Math.random() * 10,
       ...formData,
       status: "Pending",
+      startDate: `${formattedDay}-${formattedMonth}-${formattedYear}`,
+      endDate: `${endDate.getDate()}-${endDate.getMonth() + 1}-${
+        endDate.getFullYear() % 100
+      }`,
     };
+    console.table(newTask)
     addTask(newTask);
     handleCloseDialog();
   };
@@ -50,7 +67,7 @@ const Form: React.FC<FormProps> = ({ setShowAddTaskDialog }) => {
           X
         </button>
         <h2 className="text-lg font-bold mb-4 text-center">Add Task</h2>
-        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <form className="bg-white shadow-md rounded px-10 pt-6 pb-8 mb-4 ">
           <div className="mb-4">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
@@ -59,13 +76,14 @@ const Form: React.FC<FormProps> = ({ setShowAddTaskDialog }) => {
               Title
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="title"
               type="text"
               name="title"
               value={formData.title}
               onChange={handleInputChange}
               placeholder="Enter task title"
+              required
             />
           </div>
           <div className="mb-4">
@@ -82,10 +100,11 @@ const Form: React.FC<FormProps> = ({ setShowAddTaskDialog }) => {
               value={formData.description}
               onChange={handleInputChange}
               placeholder="Enter task description"
+              required
             ></textarea>
           </div>
-          <div className="mb-4">
-            <label
+          {/* <div className="mb-4">
+            {/* <label
               className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor="team"
             >
@@ -99,8 +118,10 @@ const Form: React.FC<FormProps> = ({ setShowAddTaskDialog }) => {
               value={formData.team}
               onChange={handleInputChange}
               placeholder="Enter team name"
-            />
-          </div>
+              required
+            /> */
+          // </div> */}
+        }
           <div className="mb-4">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
@@ -116,9 +137,29 @@ const Form: React.FC<FormProps> = ({ setShowAddTaskDialog }) => {
               value={formData.assignees}
               onChange={handleInputChange}
               placeholder="Enter assignees"
+              required
             />
           </div>
           <div className="mb-6">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="team"
+            >
+              Team
+            </label>
+            <select
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-2"
+              id="team"
+              name="team"
+              value={formData.team}
+              onChange={handleInputChange}
+              required
+            >
+              <option>Select Team </option>
+              <option value="Backend">Backend</option>
+              <option value="Frontend">Frontend</option>
+              <option value="UI">UI UX</option>
+            </select>
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor="priority"
