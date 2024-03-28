@@ -42,9 +42,10 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
     <div className= " bg-white shadow-md rounded p-4 mb-4">
       <h3 className="font-semibold">{task.title}</h3>
       <p>Description: {task.description}</p>
-      <p>Start Date: {task.priority}</p>
+      <p>Priority: {task.priority}</p>
       <p>Assignee: {task.status}</p>
       <p>{task.assignees}</p>
+      <p>Date: {task.startDate}</p>
       <div className="flex justify-between mt-4">
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"

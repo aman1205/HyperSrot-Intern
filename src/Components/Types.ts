@@ -7,5 +7,7 @@ export interface Task {
   priority:string;
   assignees:string
   team:string
+  startDate:string,
+  endDate:string | null
   }
   
